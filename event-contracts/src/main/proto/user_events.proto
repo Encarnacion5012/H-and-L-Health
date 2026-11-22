@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+option java_package = "user_events";
+
+
+message UserEvent{
+  string event_id = 1;
+  string occurred_at = 2;
+  string authUserId = 3;
+
+  oneof payload{
+    UserRegisteredEvent userRegister= 4;
+    PatientProfileCreatedEvent patientProfileCreated= 5;
+    DoctorRegisteredEvent doctorRegister = 6;
+    PatientRegisteredEvent patientRegister = 7;
+    DoctorProfileCreatedEvent doctorProfileCreated = 8;
+    ProfileCreationFailedEvent profileCreationFailed = 9;
+
+  }
+}
+
+
+message UserRegisteredEvent{
+  string username =1;
+  string email = 2;
+  bool active = 3;
+  string created_at = 4;
+  string role = 5;
+}
+
+message PatientRegisteredEvent{
+  string username = 1;
+  string email = 2;
+  string personal_id = 3;
+  string name = 4;
+  string last_name = 5;
+  string phone_number = 6;
+  string birth_date = 7;
+  string gender = 8;
+  string address =9;
+}
+
+message DoctorRegisteredEvent{
+  string username =1;
+  string email =2;
+  string personalId =3;
+  string name = 4;
+  string last_name = 5;
+  string phone_number = 6;
+  repeated int32 specialty_ids = 7;
+  string appointment_price = 8;
+}
+
+
+message PatientProfileCreatedEvent{
+  string patient_id = 1;
+  string personal_id = 2;
+  string full_name = 3;
+  string email = 4;
+  string phoneNumber = 5;
+}
+
+message DoctorProfileCreatedEvent{
+  string doctor_id = 1;
+  string personal_id = 2;
+  string full_name = 3;
+  string email = 4;
+  string phoneNumber = 5;
+
+}
+
+message ProfileCreationFailedEvent{
+  string sourceService = 1;
+
+}

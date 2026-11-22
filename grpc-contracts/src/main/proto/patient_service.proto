@@ -13,10 +13,10 @@ message ValidatePatientRequest{
 }
 
 message ValidatePatientResponse{
-  bool exist =1;
-  string patient_id =2;
-  string full_name =3;
-  string personal_id = 4;
+  string patient_id =1;
+  string full_name =2;
+  string personal_id = 3;
+  string patient_email = 4;
 
 }
 

@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+option java_package = "appointments_events";
+
+
+message AppointmentEvent{
+  string event_id = 1;
+  string occurred_at = 2;
+  string appointment_id = 3;
+
+  oneof payload {
+    AppointmentScheduled scheduled =4;
+    AppointmentRescheduled rescheduled=5;
+    AppointmentCancelled cancelled = 6;
+    AppointmentReminder reminder = 7;
+
+  }
+}
+
+
+message AppointmentScheduled{
+  string medical_service_id =1;
+  string patient_id = 2;
+  string patient_name = 3;
+  string doctor_id = 4;
+  string doctor_name = 5;
+  string specialty = 6;
+  string date_time = 7;
+  string price = 8;
+  string patient_email =9;
+  string Doctor_email = 10;
+}
+
+message AppointmentRescheduled{
+  string patient_id = 1;
+  string patient_name = 2;
+  string doctor_id = 3;
+  string doctor_name = 4;
+  string specialty = 5;
+  string previousDateTime = 6;
+  string newDateTime = 7;
+  string patient_email =8;
+  string Doctor_email = 9;
+
+}
+
+
+  message AppointmentCancelled {
+    string medical_service_id = 1;
+    string patient_id = 2;
+    string doctor_id = 3;
+    string cancelled_by_user_id = 4;
+    string cancelled_by_role = 5;
+    string reason = 6;
+    string patient_email =7;
+    string Doctor_email = 8;
+
+  }
+
+
+  message AppointmentReminder{
+    string patient_id = 1;
+    string patient_name = 2;
+    string doctor_id = 3;
+    string doctor_name = 4;
+    string specialty =5;
+    string dateTime = 6;
+    int32 hoursBeforeAppointment = 7;
+    string patient_email = 8;
+  }
