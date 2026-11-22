@@ -1,3 +1,28 @@
 spring:
   application:
     name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:auth_db}
+    username: ${DB_USERNAME:estainlin}
+    password: ${DB_PASSWORD:Estudent1!}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+
+
+server:
+  port: 4001
+
+app:
+  jwt:
+    public-key: ${PUBLICKEY_JWT}
+    private-key: ${PRIVATEKEY_JWT}

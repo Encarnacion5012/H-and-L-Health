@@ -1,0 +1,103 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001
+      author: estainlin
+      preConditions:
+        - dbms:
+            type: postgresql
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: auth_user_id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  defaultValueComputed: uuidv7()
+              - column:
+                  name: username
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(150)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: active
+                  type: boolean
+                  constraints:
+                    nullable: false
+                  defaultValueBoolean: true
+              - column:
+                  name: created_at
+                  type: timestamptz
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: now()
+              - column:
+                  name: actived_at
+                  type: timestamptz
+                  constraints:
+                    nullable: true
+                  defaultOnNull: true
+              - column:
+                  name: profile_photo
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                  defaultOnNull: true
+
+        #Create table role
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id_role
+                  type: int
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                  autoIncrement: true
+              - column:
+                  name: rol
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: description
+                  type: varchar(300)
+                  constraints:
+                    nullable: true
+
+        #Tabla Users_Roles
+        - createTable:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: id_role
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_users_roles-roles
+                    references: roles(id_role)
+                    primaryKey: true
+              - column:
+                  name: auth_user_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_users_roles-users
+                    references: users(auth_user_id)
+                    primaryKey: true
+
