@@ -1,0 +1,129 @@
+
+
+services:
+  auth-service-db:
+    container_name: auth-service-db
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: auth_db
+      POSTGRES_USER: estainlin
+      POSTGRES_PASSWORD: Estudent1!
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U estainlin -d auth_db" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - auth-service-db_data:/var/lib/postgresql/18/data
+    networks:
+      - db_net
+
+  patient-service-db:
+    container_name: patient-service-db
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: patient_db
+      POSTGRES_USER: estainlin
+      POSTGRES_PASSWORD: Estudent1!
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U estainlin -d patient_db" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - patient-service-db_data:/var/lib/postgresql/18/data
+    networks:
+      - db_net
+
+
+  doctor-service-db:
+    container_name: doctor-service-db
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: doctor_db
+      POSTGRES_USER: estainlin
+      POSTGRES_PASSWORD: Estudent1!
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U estainlin -d doctor_db" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - doctor-service-db_data:/var/lib/postgresql/18/data
+    networks:
+      - db_net
+
+  medical_services-service-db:
+    container_name: medical_services-service-db
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: medical_services_db
+      POSTGRES_USER: estainlin
+      POSTGRES_PASSWORD: Estudent1!
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U estainlin -d medical_services_db" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - medical_services-service-db_data:/var/lib/postgresql/18/data
+    networks:
+      - db_net
+
+  kafka:
+    image: apache/kafka:latest
+    container_name: kafka
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,EXTERNAL://localhost:9094
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+    ports:
+      - "9092:9092"
+      - "9094:9094"
+    networks:
+      - internal_kafka_net
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin_gui
+    environment:
+      PGADMIN_DEFAULT_EMAIL: estainlinv@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    volumes:
+      - pg_pgadmin_data:/var/lib/pgadmin
+    networks:
+      - db_net
+
+volumes:
+  kafka_data:
+    driver: local
+  auth-service-db_data:
+    driver: local
+  patient-service-db_data:
+    driver: local
+  doctor-service-db_data:
+    driver: local
+  medical_services-service-db_data:
+    driver: local
+  pg_pgadmin_data:
+    driver: local
+
+
+networks:
+  db_net:
+    driver: bridge
+  internal_services_net:
+    driver: bridge
+  internal_kafka_net:
+    driver: bridge
