@@ -11,15 +11,7 @@ group = "com"
 version = "0.0.1-SNAPSHOT"
 description = "doctor-service"
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
 
-repositories {
-    mavenCentral()
-}
 
 
 
@@ -45,7 +37,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    testAnnotationProcessor("org.projectlombok:lombok")
+
+
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.2.0")
 
 
     val mapstructVersion = "1.6.3"

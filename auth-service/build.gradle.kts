@@ -27,6 +27,8 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok")
 
 
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.2.0")
+
     implementation(project(":event-contracts"))
 
 }
