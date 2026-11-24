@@ -17,9 +17,9 @@ dependencies {
     implementation("com.github.f4b6a3:uuid-creator:6.1.0")
 
 
-    compileOnly("org.projectlombok:lombok")
+
     runtimeOnly("org.postgresql:postgresql")
-    annotationProcessor("org.projectlombok:lombok")
+
     testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")
     testImplementation("org.springframework.boot:spring-boot-starter-kafka-test")
     testImplementation("org.springframework.boot:spring-boot-starter-security-oauth2-resource-server-test")
@@ -27,7 +27,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
     testCompileOnly("org.projectlombok:lombok")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    testAnnotationProcessor("org.projectlombok:lombok")
+
 
     implementation("org.springframework.boot:spring-boot-starter-liquibase")
     testImplementation("org.springframework.boot:spring-boot-starter-liquibase-test")
@@ -36,6 +36,15 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.2.0")
 
     implementation(project(":event-contracts"))
+
+    val mapstructVersion = "1.6.3"
+
+    // MapStruct & Lombok
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+    implementation("org.mapstruct:mapstruct:$mapstructVersion")
+    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
+    annotationProcessor("org.mapstruct:mapstruct-processor:$mapstructVersion")
 
 }
 
