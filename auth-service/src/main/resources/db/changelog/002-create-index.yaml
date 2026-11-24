@@ -11,12 +11,14 @@ databaseChangeLog:
             tableName: users
             unique: true
             columns:
-              - column: email
+              - column:
+                  name: email
         - createIndex:
             indexName: idx_users_username
             tableName: users
             unique: true
             columns:
-              - column: username
+              - column:
+                  name: username
 
 

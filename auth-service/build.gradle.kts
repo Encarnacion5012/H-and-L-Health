@@ -14,6 +14,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-security-oauth2-resource-server")
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
+    implementation("com.github.f4b6a3:uuid-creator:6.1.0")
 
 
     compileOnly("org.projectlombok:lombok")

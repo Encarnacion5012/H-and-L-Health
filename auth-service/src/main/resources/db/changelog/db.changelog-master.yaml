@@ -1,3 +1,7 @@
 databaseChangeLog:
   - include: 
       file: /db/changelog/001-create-tables.yaml
+  - include:
+      file: /db/changelog/002-create-index.yaml
+  - include:
+      file: db/changelog/003-insert-data-roles.yaml

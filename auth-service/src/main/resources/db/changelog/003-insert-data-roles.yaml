@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003
+      author: estainlin
+      preConditions:
+        - dbms:
+            type: postgresql
+      changes:
+        - insert:
+            tableName: roles
+            columns:
+              - column: {name: role, value: 'ADMIN'}
+              - column: {name: description, value: 'Admin role'}
+        - insert:
+            tableName: roles
+            columns:
+              - column: { name: role, value: 'PATIENT' }
+              - column: { name: description, value: 'Patient role' }
+        - insert:
+            tableName: roles
+            columns:
+              - column: { name: role, value: 'DOCTOR' }
+              - column: { name: description, value: 'Doctor role' }
+        - insert:
+            tableName: roles
+            columns:
+              - column: { name: role, value: 'RECEPTIONIST' }
+              - column: { name: description, value: 'RECEPTIONIST role' }
+
+
+
+
+
+
+
+
+
+
+
+

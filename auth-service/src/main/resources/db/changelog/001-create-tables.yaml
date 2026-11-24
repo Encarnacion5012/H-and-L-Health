@@ -62,14 +62,14 @@ databaseChangeLog:
             tableName: roles
             columns:
               - column:
-                  name: id_role
+                  name: role_id
                   type: int
                   constraints:
                     nullable: false
                     primaryKey: true
                   autoIncrement: true
               - column:
-                  name: rol
+                  name: role
                   type: varchar(50)
                   constraints:
                     nullable: false
@@ -85,12 +85,12 @@ databaseChangeLog:
             tableName: users_roles
             columns:
               - column:
-                  name: id_role
+                  name: role_id
                   type: int
                   constraints:
                     nullable: false
                     foreignKeyName: fk_users_roles-roles
-                    references: roles(id_role)
+                    references: roles(role_id)
                     primaryKey: true
               - column:
                   name: auth_user_id
