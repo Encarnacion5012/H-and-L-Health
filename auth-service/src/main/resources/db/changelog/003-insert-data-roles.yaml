@@ -9,22 +9,22 @@ databaseChangeLog:
         - insert:
             tableName: roles
             columns:
-              - column: {name: role, value: 'ADMIN'}
+              - column: {name: role_name, value: 'ADMIN'}
               - column: {name: description, value: 'Admin role'}
         - insert:
             tableName: roles
             columns:
-              - column: { name: role, value: 'PATIENT' }
+              - column: { name: role_name, value: 'PATIENT' }
               - column: { name: description, value: 'Patient role' }
         - insert:
             tableName: roles
             columns:
-              - column: { name: role, value: 'DOCTOR' }
+              - column: { name: role_name, value: 'DOCTOR' }
               - column: { name: description, value: 'Doctor role' }
         - insert:
             tableName: roles
             columns:
-              - column: { name: role, value: 'RECEPTIONIST' }
+              - column: { name: role_name, value: 'RECEPTIONIST' }
               - column: { name: description, value: 'RECEPTIONIST role' }
 
 

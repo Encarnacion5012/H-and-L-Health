@@ -48,8 +48,19 @@ databaseChangeLog:
                   name: actived_at
                   type: timestamptz
                   constraints:
+                    nullable: false
+              - column:
+                  name: desactivated_at
+                  type: timestamptz
+                  constraints:
                     nullable: true
                   defaultOnNull: true
+              - column:
+                  name: updated_at
+                  type: timestamptz
+                  defaultOnNull: true
+                  constraints:
+                    nullable: true
               - column:
                   name: profile_photo
                   type: varchar(255)
@@ -69,7 +80,7 @@ databaseChangeLog:
                     primaryKey: true
                   autoIncrement: true
               - column:
-                  name: role
+                  name: role_name
                   type: varchar(50)
                   constraints:
                     nullable: false

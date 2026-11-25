@@ -1,5 +1,7 @@
 package com.authservice.aplication.mapper;
 
+import com.authservice.aplication.dto.commands.CreateDoctorCommand;
+import com.authservice.aplication.dto.commands.CreateGenralUserWithRoleCommand;
 import com.authservice.aplication.dto.commands.CreatePatientCommand;
 import com.authservice.domain.model.User;
 import org.mapstruct.Mapper;
@@ -19,6 +21,32 @@ public interface UserAplicationMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "desactivatedAt",  ignore = true)
     @Mapping(target = "activatedAt",  ignore = true)
-    @Mapping(target = "idsRoles",  source = "idsRoles")
-    User createUserFromCreatePatientCommand(CreatePatientCommand createPatientCommand, String encryptedPassword, Set<Integer> idsRoles);
+    @Mapping(target = "idsRoles",  ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    User createUserFromCreatePatientCommand(CreatePatientCommand createPatientCommand, String encryptedPassword);
+
+    @Mapping(target = "authUserId", ignore = true)
+    @Mapping(target = "username", source = "createDoctorCommand.generalUserData.username")
+    @Mapping(target = "email", source = "createDoctorCommand.generalUserData.email")
+    @Mapping(target = "profilePhoto", source = "createDoctorCommand.generalUserData.profile_photo")
+    @Mapping(target = "password", source = "encryptedPassword")
+    @Mapping(target = "active", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "desactivatedAt",  ignore = true)
+    @Mapping(target = "activatedAt",  ignore = true)
+    @Mapping(target = "idsRoles",  ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    User createUserFromCreateDoctorCommand(CreateDoctorCommand createDoctorCommand, String encryptedPassword);
+
+    @Mapping(target = "authUserId", ignore = true)
+    @Mapping(target = "username", source = "createGenralUserWithRoleCommand.username")
+    @Mapping(target = "email", source = "createGenralUserWithRoleCommand.email")
+    @Mapping(target = "profilePhoto", source = "createGenralUserWithRoleCommand.profile_photo")
+    @Mapping(target = "password", source = "encryptedPassword")
+    @Mapping(target = "active", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "desactivatedAt",  ignore = true)
+    @Mapping(target = "activatedAt",  ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    User createUserFromCreateGeneralUserCommandWithRole(CreateGenralUserWithRoleCommand createGenralUserWithRoleCommand, String encryptedPassword);
 }

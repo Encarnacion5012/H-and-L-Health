@@ -17,12 +17,13 @@ public class User {
  private Boolean active;
  private Instant createdAt;
  private Instant desactivatedAt;
+ private Instant updatedAt;
  private Instant activatedAt;
  private String profilePhoto;
  private Set<Integer> idsRoles;
 
     @Builder(toBuilder = true)
-    private User(UUID authUserId, String username, String password, String email, Boolean active, Instant createdAt, Instant desactivatedAt, Instant activatedAt, String profilePhoto,  Set<Integer> idsRoles) {
+    private User(UUID authUserId,Instant updatedAt, String username, String password, String email, Boolean active, Instant createdAt, Instant desactivatedAt, Instant activatedAt, String profilePhoto,  Set<Integer> idsRoles) {
         this.authUserId = (authUserId != null) ? authUserId : UuidCreator.getTimeOrderedEpoch();
         this.username = verifyUsername(username);
         this.password = verifyPassword(password);
@@ -32,7 +33,8 @@ public class User {
         this.desactivatedAt = desactivatedAt;
         this.activatedAt = this.createdAt;
         this.profilePhoto = profilePhoto;
-        this.idsRoles = verifyIdsRoles(idsRoles);
+        this.idsRoles = idsRoles;
+        this.updatedAt = updatedAt;
     }
 
 
@@ -67,11 +69,5 @@ public class User {
         return username;
     }
 
-    private Set<Integer> verifyIdsRoles(Set<Integer> idsRoles) {
-        if (idsRoles == null) {
-            throw new IllegalArgumentException("Ids roles cannot be null");
-        }
 
-        return idsRoles;
-    }
 }

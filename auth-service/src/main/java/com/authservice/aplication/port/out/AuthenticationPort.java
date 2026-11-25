@@ -1,7 +1,7 @@
 package com.authservice.aplication.port.out;
 
-import com.authservice.aplication.dto.results.AuthenticatedUser;
+import com.authservice.aplication.dto.results.AuthenticatedUserResult;
 
 public interface AuthenticationPort {
-AuthenticatedUser authenticate(String username, String password);
+AuthenticatedUserResult authenticate(String username, String password);
 }

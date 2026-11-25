@@ -20,5 +20,12 @@ databaseChangeLog:
             columns:
               - column:
                   name: username
+        - createIndex:
+            indexName: idx_roles_role_name
+            tableName: roles
+            unique: true
+            columns:
+              - column:
+                  name: role_name
 
 

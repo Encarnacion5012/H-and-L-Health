@@ -4,6 +4,6 @@ import com.authservice.aplication.dto.results.UserResult;
 
 import java.util.UUID;
 
-public interface FindUserById {
+public interface FindUserByIdPort {
 UserResult findById(UUID userId);
 }

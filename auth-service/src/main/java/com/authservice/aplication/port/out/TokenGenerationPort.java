@@ -1,7 +1,7 @@
 package com.authservice.aplication.port.out;
 
-import com.authservice.aplication.dto.commands.TokenSubject;
+import com.authservice.aplication.dto.results.AuthenticatedUserResult;
 
 public interface TokenGenerationPort {
-    String  generateToken(TokenSubject tokenSubject);
+    String  generateToken(AuthenticatedUserResult authenticatedUserResult);
 }
