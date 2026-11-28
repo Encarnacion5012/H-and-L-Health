@@ -18,7 +18,16 @@ import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
-public class UserPersistenceAdapter implements CreateUserGeneralPort, DesactivateUserPort, FindUserByIdPort, ActivateUserPort, CreateDoctorPort, CreatePatientPort {
+public class UserPersistenceAdapter implements
+        CreateUserGeneralPort,
+        DesactivateUserPort,
+        FindUserByIdPort,
+        ActivateUserPort,
+        CreateDoctorPort,
+        CreatePatientPort,
+        ExistByEmailPort,
+        ExistByUsernamePort
+{
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final UserPersistenceMapper userPersistenceMapper;
@@ -80,5 +89,15 @@ public class UserPersistenceAdapter implements CreateUserGeneralPort, Desactivat
         userEntity.relationshipHelperUserRoleEntity(Set.of(roleEntity));
 
         userRepository.save(userEntity);
+    }
+
+    @Override
+    public boolean existByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public boolean existByUsername(String username) {
+        return userRepository.existsByUsername(username);
     }
 }

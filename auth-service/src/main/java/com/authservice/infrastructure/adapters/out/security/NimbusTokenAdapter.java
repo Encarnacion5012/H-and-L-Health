@@ -1,6 +1,6 @@
 package com.authservice.infrastructure.adapters.out.security;
 import com.authservice.aplication.dto.results.AuthenticatedUserResult;
-import com.authservice.aplication.port.out.TokenGenerationPort;
+import com.authservice.aplication.port.out.security.TokenGenerationPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;

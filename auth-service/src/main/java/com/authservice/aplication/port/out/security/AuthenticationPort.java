@@ -1,4 +1,4 @@
-package com.authservice.aplication.port.out;
+package com.authservice.aplication.port.out.security;
 
 import com.authservice.aplication.dto.results.AuthenticatedUserResult;
 

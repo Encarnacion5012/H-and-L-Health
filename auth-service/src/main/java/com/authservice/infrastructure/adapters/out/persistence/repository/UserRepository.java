@@ -12,4 +12,7 @@ public interface UserRepository extends JpaRepository<UserEntity, UUID> {
     @EntityGraph(attributePaths = "roles")
     Optional<UserEntity> findByEmailAndActiveTrue(String email);
     Optional<UserEntity> findByAuthUserIdAndActiveTrue(UUID authUserId);
+
+    boolean existsByUsername(String username);
+    boolean existsByEmail(String email);
 }

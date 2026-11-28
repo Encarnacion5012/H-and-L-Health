@@ -25,9 +25,8 @@ message UserEvent{
 message UserRegisteredEvent{
   string username =1;
   string email = 2;
-  bool active = 3;
   string created_at = 4;
-  string role = 5;
+  repeated string roles = 5;
 }
 
 message PatientRegisteredEvent{
@@ -40,6 +39,7 @@ message PatientRegisteredEvent{
   string birth_date = 7;
   string gender = 8;
   string address =9;
+  string created_at = 10;
 }
 
 message DoctorRegisteredEvent{
@@ -51,6 +51,7 @@ message DoctorRegisteredEvent{
   string phone_number = 6;
   repeated int32 specialty_ids = 7;
   string appointment_price = 8;
+  string created_at = 9;
 }
 
 
@@ -60,6 +61,7 @@ message PatientProfileCreatedEvent{
   string full_name = 3;
   string email = 4;
   string phoneNumber = 5;
+  string created_at = 6;
 }
 
 message DoctorProfileCreatedEvent{
@@ -68,6 +70,7 @@ message DoctorProfileCreatedEvent{
   string full_name = 3;
   string email = 4;
   string phoneNumber = 5;
+  string created_at = 6;
 
 }
 

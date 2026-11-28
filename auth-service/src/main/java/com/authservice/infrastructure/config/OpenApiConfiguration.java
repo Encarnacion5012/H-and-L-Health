@@ -22,12 +22,12 @@ public class OpenApiConfiguration {
                                         .name("bearerAuth")
                                         .type(SecurityScheme.Type.HTTP)
                                         .scheme("bearer")
-                                        .bearerFormat("JWT")))
-                .servers(
-                List.of(new Server()
-                        .url("http://localhost:4004/api")
-                        .description("API GATEWAY")
-                )
-        );
+                                        .bearerFormat("JWT")));
+//                .servers(
+//                List.of(new Server()
+//                        .url("http://localhost:4004/api")
+//                        .description("API GATEWAY")
+//                )
+//        );
     }
 }

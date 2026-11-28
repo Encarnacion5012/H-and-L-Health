@@ -1,7 +1,7 @@
 package com.authservice.infrastructure.adapters.out.security;
 
 import com.authservice.aplication.dto.results.AuthenticatedUserResult;
-import com.authservice.aplication.port.out.AuthenticationPort;
+import com.authservice.aplication.port.out.security.AuthenticationPort;
 import com.authservice.infrastructure.adapters.out.persistence.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

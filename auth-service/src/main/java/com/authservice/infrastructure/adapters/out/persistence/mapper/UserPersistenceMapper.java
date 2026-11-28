@@ -27,4 +27,7 @@ public interface UserPersistenceMapper {
         }
         return role.getRoleName().name();
     }
+
+
+
 }

@@ -1,6 +1,6 @@
 package com.authservice.infrastructure.adapters.out.security;
 
-import com.authservice.aplication.port.out.EncryptPasswordPort;
+import com.authservice.aplication.port.out.security.EncryptPasswordPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
